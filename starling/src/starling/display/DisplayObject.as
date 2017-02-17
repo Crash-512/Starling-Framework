@@ -798,13 +798,17 @@ package starling.display
          *  to the stage. */
         public function get stage():Stage { return this.base as Stage; }
 		
-		public function set rotationInRadians(value:Number):void
+		public function set rotationInDegrees(value:Number):void
 		{
-            
+            rotation = value * DEGREE_TO_RADIANS_PI;
 		}
-		public function get rotationInRadians():Number
+        
+		public function get rotationInDegrees():Number
 		{
-			return 0;
+			return rotation * RADIANS_TO_DEGREE_PI;
 		}
+        
+        public static const DEGREE_TO_RADIANS_PI:Number = Math.PI/180;
+		public static const RADIANS_TO_DEGREE_PI:Number = 180/Math.PI;
 	}
 }
