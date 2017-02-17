@@ -10,8 +10,8 @@
 
 package starling.display
 {
-	import engine.interfaces.IContainer;
-	import engine.interfaces.IDisplayObject;
+	import engine.display.IContainer;
+	import engine.display.IDisplayObject;
 	
 	import flash.geom.Matrix;
     import flash.geom.Point;
