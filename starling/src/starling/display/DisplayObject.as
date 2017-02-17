@@ -10,7 +10,9 @@
 
 package starling.display
 {
-    import flash.geom.Matrix;
+	import engine.interfaces.IDisplayObject;
+	
+	import flash.geom.Matrix;
     import flash.geom.Point;
     import flash.geom.Rectangle;
     import flash.system.Capabilities;
@@ -122,7 +124,7 @@ package starling.display
      *  @see Sprite
      *  @see Stage 
      */
-    public class DisplayObject extends EventDispatcher
+    public class DisplayObject extends EventDispatcher implements IDisplayObject
     {
         private static const TWO_PI:Number = Math.PI * 2.0;
         
@@ -452,6 +454,37 @@ package starling.display
             Starling.current.stage.removeEnterFrameListener(this);
         }
         
+        public function setPosition(x:Number, y:Number):void
+		{
+            mX = x;
+            mY = y;
+            mOrientationChanged = true;
+		}
+        
+		public function setScale(scaleX:Number, scaleY:Number):void
+		{
+            mScaleX = scaleX;
+            mScaleY = scaleY;
+            mOrientationChanged = true;
+		}
+        
+		public function setPivot(pivotX:Number, pivotY:Number):void
+		{
+            mPivotX = pivotX;
+            mPivotY = pivotY;
+            mOrientationChanged = true;
+		}
+        
+		public function resetTransform():void
+		{
+            mX = 0;
+            mY = 0;
+            mScaleX = 1;
+            mScaleY = 1;
+            mRotation = 0;
+            mOrientationChanged = true;
+		}
+        
         // properties
  
         /** The transformation matrix of the object relative to its parent.
@@ -764,5 +797,14 @@ package starling.display
         /** The stage the display object is connected to, or null if it is not connected 
          *  to the stage. */
         public function get stage():Stage { return this.base as Stage; }
-    }
+		
+		public function set rotationInRadians(value:Number):void
+		{
+            
+		}
+		public function get rotationInRadians():Number
+		{
+			return 0;
+		}
+	}
 }

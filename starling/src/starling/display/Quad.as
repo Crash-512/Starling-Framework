@@ -47,8 +47,16 @@ package starling.display
         /** Creates a quad with a certain size and color. The last parameter controls if the 
          *  alpha value should be premultiplied into the color values on rendering, which can
          *  influence blending output. You can use the default value in most cases.  */
-        public function Quad(width:Number, height:Number, color:uint=0xffffff,
-                             premultipliedAlpha:Boolean=true)
+        public function Quad(width:Number = 0, height:Number = 0, color:uint=0xffffff, premultipliedAlpha:Boolean=true)
+        {
+            if (width == 0.0 || height == 0.0)
+            {
+                return;
+            }
+            constructorInternal(width, height, color, premultipliedAlpha);
+        }
+        
+        protected function constructorInternal(width:Number, height:Number, color:uint=0xffffff, premultipliedAlpha:Boolean=true):void
         {
             if (width == 0.0 || height == 0.0)
                 throw new ArgumentError("Invalid size: width and height must not be zero");
@@ -63,7 +71,7 @@ package starling.display
             mVertexData.setUniformColor(color);
             
             onVertexDataChanged();
-        }
+		}
         
         /** Call this method after manually changing the contents of 'mVertexData'. */
         protected function onVertexDataChanged():void

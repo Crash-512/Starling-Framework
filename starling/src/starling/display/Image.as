@@ -45,8 +45,16 @@ package starling.display
         private var mVertexDataCacheInvalid:Boolean;
         
         /** Creates a quad with a texture mapped onto it. */
-        public function Image(texture:Texture)
+        public function Image(texture:Texture = null)
         {
+            if (texture)
+            {
+                setTextureInternal(texture);
+            }
+        }
+        
+		protected function setTextureInternal(texture:Texture):void
+		{
             if (texture)
             {
                 var frame:Rectangle = texture.frame;
@@ -54,7 +62,7 @@ package starling.display
                 var height:Number = frame ? frame.height : texture.height;
                 var pma:Boolean = texture.premultipliedAlpha;
                 
-                super(width, height, 0xffffff, pma);
+                constructorInternal(width, height, 0xffffff, pma);
                 
                 mVertexData.setTexCoords(0, 0.0, 0.0);
                 mVertexData.setTexCoords(1, 1.0, 0.0);
@@ -70,7 +78,7 @@ package starling.display
             {
                 throw new ArgumentError("Texture cannot be null");
             }
-        }
+		}
         
         /** Creates an Image with a texture that is created from a bitmap object. */
         public static function fromBitmap(bitmap:Bitmap, generateMipMaps:Boolean=true, 
