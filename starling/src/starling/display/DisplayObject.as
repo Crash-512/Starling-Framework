@@ -470,8 +470,8 @@ package starling.display
         
 		public function setPivot(pivotX:Number, pivotY:Number):void
 		{
-            mPivotX = pivotX;
-            mPivotY = pivotY;
+            mPivotX = isNaN(pivotX) ? 0 : pivotX;
+            mPivotY = isNaN(pivotY) ? 0 : pivotY;
             mOrientationChanged = true;
 		}
         

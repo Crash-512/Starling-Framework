@@ -10,12 +10,12 @@
 
 package starling.textures
 {
-    import flash.geom.Rectangle;
-    import flash.utils.Dictionary;
-    
-    import starling.utils.cleanMasterString;
-
-    /** A texture atlas is a collection of many smaller textures in one big image. This class
+	import flash.geom.Rectangle;
+	import flash.utils.Dictionary;
+	
+	import starling.utils.cleanMasterString;
+	
+	/** A texture atlas is a collection of many smaller textures in one big image. This class
      *  is used to access textures from such an atlas.
      *  
      *  <p>Using a texture atlas for your textures solves two problems:</p>
@@ -112,13 +112,15 @@ package starling.textures
                 var frameY:Number      = parseFloat(subTexture.@frameY) / scale;
                 var frameWidth:Number  = parseFloat(subTexture.@frameWidth)  / scale;
                 var frameHeight:Number = parseFloat(subTexture.@frameHeight) / scale;
+                var pivotX:Number      = parseFloat(subTexture.@pivotX);
+                var pivotY:Number      = parseFloat(subTexture.@pivotY);
                 var rotated:Boolean    = parseBool( subTexture.@rotated);
                 
                 var region:Rectangle = new Rectangle(x, y, width, height);
                 var frame:Rectangle  = frameWidth > 0 && frameHeight > 0 ?
                         new Rectangle(frameX, frameY, frameWidth, frameHeight) : null;
                 
-                addRegion(name, region, frame, rotated);
+                addRegion(name, region, frame, rotated, pivotX, pivotY);
             }
         }
         
@@ -127,8 +129,14 @@ package starling.textures
         {
             var info:TextureInfo = mTextureInfos[name];
             
-            if (info == null) return null;
-            else return Texture.fromTexture(mAtlasTexture, info.region, info.frame, info.rotated);
+            if (info != null)
+            {
+                var texture:Texture = Texture.fromTexture(mAtlasTexture, info.region, info.frame, info.rotated);
+                texture.pivotX = info.pivotX;
+                texture.pivotY = info.pivotY;
+                return texture;
+			}
+            return null;
         }
         
         /** Returns all textures that start with a certain string, sorted alphabetically
@@ -191,9 +199,9 @@ package starling.textures
         /** Adds a named region for a subtexture (described by rectangle with coordinates in 
          *  pixels) with an optional frame. */
         public function addRegion(name:String, region:Rectangle, frame:Rectangle=null,
-                                  rotated:Boolean=false):void
+                                  rotated:Boolean=false, pivotX:Number=0, pivotY:Number=0):void
         {
-            mTextureInfos[name] = new TextureInfo(region, frame, rotated);
+            mTextureInfos[name] = new TextureInfo(region, frame, rotated, pivotX, pivotY);
             mTextureNames = null;
         }
         
@@ -223,11 +231,15 @@ class TextureInfo
     public var region:Rectangle;
     public var frame:Rectangle;
     public var rotated:Boolean;
+	public var pivotX:Number;
+	public var pivotY:Number;
     
-    public function TextureInfo(region:Rectangle, frame:Rectangle, rotated:Boolean)
+    public function TextureInfo(region:Rectangle, frame:Rectangle, rotated:Boolean, pivotX:Number, pivotY:Number)
     {
         this.region = region;
         this.frame = frame;
-        this.rotated = rotated;       
-    }
+        this.rotated = rotated;
+		this.pivotX = pivotX;
+		this.pivotY = pivotY;
+	}
 }

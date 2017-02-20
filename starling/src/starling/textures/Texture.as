@@ -102,6 +102,9 @@ package starling.textures
      */ 
     public class Texture
     {
+        public var pivotX:Number = 0;
+        public var pivotY:Number = 0;
+        
         /** @private */
         public function Texture()
         {
