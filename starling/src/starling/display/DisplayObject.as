@@ -677,6 +677,14 @@ package starling.display
             }
         }
         
+        public function get scale():Number { return mScaleX; }
+        public function set scale(value:Number):void 
+        {
+            mScaleX = value;
+            mScaleY = value;
+            mOrientationChanged = true;
+		}
+        
         /** The horizontal scale factor. '1' means no scale, negative values flip the object. */
         public function get scaleX():Number { return mScaleX; }
         public function set scaleX(value:Number):void 
