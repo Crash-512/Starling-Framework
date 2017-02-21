@@ -468,6 +468,12 @@ package starling.display
             mOrientationChanged = true;
 		}
         
+		public function setSize(width:Number, height:Number):void
+		{
+            this.width = width;
+            this.height = height;
+		}
+        
 		public function setPivot(pivotX:Number, pivotY:Number):void
 		{
             mPivotX = isNaN(pivotX) ? 0 : pivotX;
