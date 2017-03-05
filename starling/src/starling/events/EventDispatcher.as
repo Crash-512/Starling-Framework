@@ -14,8 +14,9 @@ package starling.events
     
     import starling.core.starling_internal;
     import starling.display.DisplayObject;
-    
-    use namespace starling_internal;
+	import starling.display.DisplayObjectContainer;
+	
+	use namespace starling_internal;
     
     /** The EventDispatcher class is the base class for all classes that dispatch events. 
      *  This is the Starling version of the Flash class with the same name. 
@@ -171,7 +172,7 @@ package starling.events
             if (sBubbleChains.length > 0) { chain = sBubbleChains.pop(); chain[0] = element; }
             else chain = new <EventDispatcher>[element];
             
-            while ((element = element.parent) != null)
+            while ((element = element.parent as DisplayObjectContainer) != null)
                 chain[int(length++)] = element;
 
             for (var i:int=0; i<length; ++i)

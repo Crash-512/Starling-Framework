@@ -10,7 +10,9 @@
 
 package starling.textures
 {
-    import flash.display.Bitmap;
+	import engine.display.ITexture;
+	
+	import flash.display.Bitmap;
     import flash.display.BitmapData;
     import flash.display3D.Context3D;
     import flash.display3D.Context3DTextureFormat;
@@ -100,7 +102,7 @@ package starling.textures
      *  @see starling.utils.AssetManager
      *  @see TextureAtlas
      */ 
-    public class Texture
+    public class Texture implements ITexture
     {
         public var pivotX:Number = 0;
         public var pivotY:Number = 0;

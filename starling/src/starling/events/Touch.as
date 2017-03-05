@@ -15,7 +15,8 @@ package starling.events
     
     import starling.core.starling_internal;
     import starling.display.DisplayObject;
-    import starling.utils.MatrixUtil;
+	import starling.display.DisplayObjectContainer;
+	import starling.utils.MatrixUtil;
     import starling.utils.formatString;
     
     use namespace starling_internal;
@@ -144,7 +145,7 @@ package starling.events
                 mBubbleChain.length = 1;
                 mBubbleChain[0] = element;
                 
-                while ((element = element.parent) != null)
+                while ((element = element.parent as DisplayObjectContainer) != null)
                     mBubbleChain[int(length++)] = element;
             }
             else

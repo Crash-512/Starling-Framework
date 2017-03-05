@@ -10,6 +10,7 @@
 
 package starling.display
 {
+	import engine.display.IContainer;
 	import engine.display.IDisplayObject;
 	
 	import flash.geom.Matrix;
@@ -783,7 +784,7 @@ package starling.display
         public function set filter(value:FragmentFilter):void { mFilter = value; }
         
         /** The display object container that contains this display object. */
-        public function get parent():DisplayObjectContainer { return mParent; }
+        public function get parent():IContainer { return mParent; }
         
         /** The topmost object in the display tree the object is part of. */
         public function get base():DisplayObject
@@ -802,7 +803,7 @@ package starling.display
             while (currentObject.mParent)
             {
                 if (currentObject.mParent is Stage) return currentObject;
-                else currentObject = currentObject.parent;
+                else currentObject = currentObject.parent as DisplayObjectContainer;
             }
             
             return null;

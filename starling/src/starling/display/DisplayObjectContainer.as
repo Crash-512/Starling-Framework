@@ -275,7 +275,7 @@ package starling.display
             while (child)
             {
                 if (child == this) return true;
-                else child = child.parent;
+                else child = child.parent as DisplayObjectContainer;
             }
             return false;
         }
