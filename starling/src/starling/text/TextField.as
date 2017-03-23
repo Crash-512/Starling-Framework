@@ -117,10 +117,19 @@ package starling.text
         private static var sNativeTextField:flash.text.TextField = new flash.text.TextField();
         
         /** Create a new text field with the given properties. */
-        public function TextField(width:int, height:int, text:String, fontName:String="Verdana",
+        public function TextField(width:int = 0, height:int = 0, text:String = "", fontName:String="Verdana",
                                   fontSize:Number=12, color:uint=0x0, bold:Boolean=false)
         {
-            mText = text ? text : "";
+            if (width != 0 && height != 0)
+			{
+				init(width, height, text, fontName, fontSize, color, bold);
+			}
+        }
+        
+        public function init(width:int, height:int, text:String, fontName:String="Verdana",
+                             fontSize:Number=12, color:uint=0x0, bold:Boolean=false):void 
+        {
+        	mText = text ? text : "";
             mFontSize = fontSize;
             mColor = color;
             mHAlign = HAlign.CENTER;
