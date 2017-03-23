@@ -49,11 +49,11 @@ package starling.display
         {
             if (texture)
             {
-                setTextureInternal(texture);
+                setTexture(texture);
             }
         }
         
-		protected function setTextureInternal(texture:Texture):void
+		public function setTexture(texture:Texture):void
 		{
             if (texture)
             {

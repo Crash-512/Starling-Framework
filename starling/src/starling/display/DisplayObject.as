@@ -10,9 +10,6 @@
 
 package starling.display
 {
-	import engine.display.IContainer;
-	import engine.display.IDisplayObject;
-	
 	import flash.geom.Matrix;
     import flash.geom.Point;
     import flash.geom.Rectangle;
@@ -125,7 +122,7 @@ package starling.display
      *  @see Sprite
      *  @see Stage 
      */
-    public class DisplayObject extends EventDispatcher implements IDisplayObject
+    public class DisplayObject extends EventDispatcher
     {
         private static const TWO_PI:Number = Math.PI * 2.0;
         
@@ -784,7 +781,7 @@ package starling.display
         public function set filter(value:FragmentFilter):void { mFilter = value; }
         
         /** The display object container that contains this display object. */
-        public function get parent():IContainer { return mParent; }
+        public function get parent():DisplayObjectContainer { return mParent; }
         
         /** The topmost object in the display tree the object is part of. */
         public function get base():DisplayObject

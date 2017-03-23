@@ -10,9 +10,6 @@
 
 package starling.display
 {
-	import engine.display.IContainer;
-	import engine.display.IDisplayObject;
-	
 	import flash.geom.Matrix;
     import flash.geom.Point;
     import flash.geom.Rectangle;
@@ -65,7 +62,7 @@ package starling.display
      *  @see Sprite
      *  @see DisplayObject
      */
-    public class DisplayObjectContainer extends DisplayObject implements IContainer
+    public class DisplayObjectContainer extends DisplayObject
     {
         // members
 
@@ -104,16 +101,15 @@ package starling.display
         // child management
         
         /** Adds a child to the container. It will be at the frontmost position. */
-        public function addChild(child:IDisplayObject):IDisplayObject
+        public function addChild(child:DisplayObject):DisplayObject
         {
             addChildAt(child, numChildren);
             return child;
         }
         
         /** Adds a child to the container at a certain index. */
-        public function addChildAt(displayObject:IDisplayObject, index:int):IDisplayObject
+        public function addChildAt(child:DisplayObject, index:int):DisplayObject
         {
-            var child:DisplayObject = displayObject as DisplayObject;
             var numChildren:int = mChildren.length; 
             
             if (index >= 0 && index <= numChildren)
@@ -151,10 +147,8 @@ package starling.display
         
         /** Removes a child from the container. If the object is not a child, nothing happens. 
          *  If requested, the child will be disposed right away. */
-        public function removeChild(displayObject:IDisplayObject, dispose:Boolean=false):IDisplayObject
+        public function removeChild(child:DisplayObject, dispose:Boolean=false):DisplayObject
         {
-            var child:DisplayObject = displayObject as DisplayObject;
-            
             var childIndex:int = getChildIndex(child);
             if (childIndex != -1) removeChildAt(childIndex, dispose);
             return child;
@@ -162,7 +156,7 @@ package starling.display
         
         /** Removes a child at a certain index. Children above the child will move down. If
          *  requested, the child will be disposed right away. */
-        public function removeChildAt(index:int, dispose:Boolean=false):IDisplayObject
+        public function removeChildAt(index:int, dispose:Boolean=false):DisplayObject
         {
             if (index >= 0 && index < numChildren)
             {
@@ -268,10 +262,8 @@ package starling.display
         }
         
         /** Determines if a certain object is a child of the container (recursively). */
-        public function contains(displayObject:IDisplayObject):Boolean
+        public function contains(child:DisplayObject):Boolean
         {
-            var child:DisplayObject = displayObject as DisplayObject;
-            
             while (child)
             {
                 if (child == this) return true;
