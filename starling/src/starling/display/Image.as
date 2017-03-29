@@ -53,6 +53,13 @@ package starling.display
             }
         }
         
+        override public function dispose():void 
+        {
+            mTexture = null;
+            mVertexData = null;
+        	super.dispose();
+        }
+        
 		public function setTexture(texture:Texture):void
 		{
             if (texture)
