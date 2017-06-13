@@ -108,7 +108,12 @@ package starling.text
         private var _helperFormat:TextFormat = new TextFormat();
 
         /** Create a new text field with the given properties. */
-        public function TextField(width:int, height:int, text:String="", format:TextFormat=null)
+        public function TextField(width:int = 0, height:int = 0, text:String="", format:TextFormat=null)
+        {
+            init(width, height, text, format);
+		}
+        
+        public function init(width:int, height:int, text:String="", format:TextFormat=null):void
         {
             _text = text ? text : "";
             _hitArea = new Rectangle(0, 0, width, height);

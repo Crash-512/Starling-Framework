@@ -59,14 +59,25 @@ package starling.display
         private static var sTexRows:Vector.<Number> = new Vector.<Number>(3, true);
 
         /** Creates an image with a texture mapped onto it. */
-        public function Image(texture:Texture)
+        public function Image(texture:Texture = null)
         {
             super(100, 100);
+            if (texture) setTexture(texture);
+        }
+        
+		public function setTexture(texture:Texture):void
+		{
             this.texture = texture;
             readjustSize();
-        }
-
-        /** The current scaling grid that is in effect. If set to null, the image is scaled just
+		}
+	
+		override public function dispose():void
+		{
+            _style.texture = null;
+			super.dispose();
+		}
+        
+		/** The current scaling grid that is in effect. If set to null, the image is scaled just
          *  like any other display object; assigning a rectangle will divide the image into a grid
          *  of nine regions, based on the center rectangle. The four corners of this grid will
          *  always maintain their original size; the other regions will stretch (horizontally,
