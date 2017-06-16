@@ -117,6 +117,10 @@ package starling.display
      */
     public class DisplayObject extends EventDispatcher
     {
+        public var _visible:Boolean;
+        public var _lastParentOrSelfChangeFrameID:uint;
+        public var _hasVisibleArea:Boolean;
+        
         // private members
         
         private var _x:Number;
@@ -129,7 +133,6 @@ package starling.display
         private var _skewY:Number;
         private var _rotation:Number;
         private var _alpha:Number;
-        private var _visible:Boolean;
         private var _touchable:Boolean;
         private var _blendMode:String;
         private var _name:String;
@@ -143,12 +146,10 @@ package starling.display
         // internal members (for fast access on rendering)
 
         /** @private */ internal var _parent:DisplayObjectContainer;
-        /** @private */ internal var _lastParentOrSelfChangeFrameID:uint;
         /** @private */ internal var _lastChildChangeFrameID:uint;
         /** @private */ internal var _tokenFrameID:uint;
         /** @private */ internal var _pushToken:BatchToken = new BatchToken();
         /** @private */ internal var _popToken:BatchToken = new BatchToken();
-        /** @private */ internal var _hasVisibleArea:Boolean;
         /** @private */ internal var _filter:FragmentFilter;
         /** @private */ internal var _mask:DisplayObject;
 
