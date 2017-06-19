@@ -10,8 +10,6 @@
 
 package starling.textures
 {
-	import engine.display.ITexture;
-	
 	import flash.display.Bitmap;
     import flash.display.BitmapData;
     import flash.display3D.Context3D;
@@ -27,8 +25,10 @@ package starling.textures
     import flash.system.Capabilities;
     import flash.utils.ByteArray;
     import flash.utils.getQualifiedClassName;
-
-    import starling.core.Starling;
+	
+	import smart.engine.display.ITexture;
+	
+	import starling.core.Starling;
     import starling.errors.AbstractClassError;
     import starling.errors.MissingContextError;
     import starling.errors.NotSupportedError;
