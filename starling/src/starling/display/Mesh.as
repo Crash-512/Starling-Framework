@@ -58,16 +58,24 @@ package starling.display
          *  If you don't pass a style, an instance of <code>MeshStyle</code> will be created
          *  for you. Note that the format of the vertex data will be matched to the
          *  given style right away. */
-        public function Mesh(vertexData:VertexData, indexData:IndexData, style:MeshStyle=null)
+        public function Mesh(vertexData:VertexData = null, indexData:IndexData = null, style:MeshStyle=null)
         {
+            if (vertexData != null && indexData != null) 
+            {
+                initInternal(vertexData, indexData, style);
+			}
+        }
+        
+		protected function initInternal(vertexData:VertexData, indexData:IndexData, style:MeshStyle=null):void
+		{
             if (vertexData == null) throw new ArgumentError("VertexData must not be null");
             if (indexData == null)  throw new ArgumentError("IndexData must not be null");
-
+            
             _vertexData = vertexData;
             _indexData = indexData;
 
             setStyle(style, false);
-        }
+		}
 
         /** @inheritDoc */
         override public function dispose():void
@@ -222,7 +230,7 @@ package starling.display
 
         /** The vertex data describing all vertices of the mesh.
          *  Any change requires a call to <code>setRequiresRedraw</code>. */
-        protected function get vertexData():VertexData { return _vertexData; }
+        public function get vertexData():VertexData { return _vertexData; }
 
         /** The index data describing how the vertices are interconnected.
          *  Any change requires a call to <code>setRequiresRedraw</code>. */
