@@ -85,7 +85,8 @@ package starling.textures
             _scale = _parent.scale * scaleModifier;
 
             if (_frame && (_frame.x > 0 || _frame.y > 0 ||
-                _frame.right < _width || _frame.bottom < _height))
+                _width - _frame.right > 0.001 || 
+                _height - _frame.bottom > 0.001))
             {
                 trace("[Starling] Warning: frames inside the texture's region are unsupported.");
             }
