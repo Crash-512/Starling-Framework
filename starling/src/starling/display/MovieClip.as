@@ -56,21 +56,23 @@ package starling.display
 
         /** Creates a movie clip from the provided textures and with the specified default framerate.
          *  The movie will have the size of the first frame. */  
-        public function MovieClip(textures:Vector.<Texture>, fps:Number=12)
+        public function MovieClip(textures:Vector.<Texture> = null, fps:Number=12)
         {
-            if (textures.length > 0)
+            if (textures != null && textures.length > 0)
             {
                 super(textures[0]);
                 init(textures, fps);
             }
-            else
-            {
-                throw new ArgumentError("Empty texture array");
-            }
         }
         
-        private function init(textures:Vector.<Texture>, fps:Number):void
+        public function init(textures:Vector.<Texture>, fps:Number):void
         {
+            if (texture == null)
+			{
+				texture = textures[0];
+                readjustSize();
+			}
+            
             if (fps <= 0) throw new ArgumentError("Invalid fps: " + fps);
             var numFrames:int = textures.length;
             
