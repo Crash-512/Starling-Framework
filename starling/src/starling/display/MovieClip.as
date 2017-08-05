@@ -58,16 +58,19 @@ package starling.display
          *  The movie will have the size of the first frame. */  
         public function MovieClip(textures:Vector.<Texture> = null, fps:Number=12)
         {
+            var texture:Texture = null;
+            
             if (textures != null && textures.length > 0)
             {
-                super(textures[0]);
+                texture = textures[0];
                 init(textures, fps);
             }
+            super(texture);
         }
         
         public function init(textures:Vector.<Texture>, fps:Number):void
         {
-            if (texture == null)
+            if (_style == null || _style.texture == null)
 			{
 				texture = textures[0];
                 readjustSize();
