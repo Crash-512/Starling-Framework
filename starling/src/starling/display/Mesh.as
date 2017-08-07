@@ -234,7 +234,7 @@ package starling.display
 
         /** The index data describing how the vertices are interconnected.
          *  Any change requires a call to <code>setRequiresRedraw</code>. */
-        protected function get indexData():IndexData { return _indexData; }
+        public function get indexData():IndexData { return _indexData; }
 
         /** The style that is used to render the mesh. Styles (which are always subclasses of
          *  <code>MeshStyle</code>) provide a means to completely modify the way a mesh is rendered.
