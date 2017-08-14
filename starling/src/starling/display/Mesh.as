@@ -62,11 +62,11 @@ package starling.display
         {
             if (vertexData != null && indexData != null) 
             {
-                initInternal(vertexData, indexData, style);
+                initMesh(vertexData, indexData, style);
 			}
         }
         
-		protected function initInternal(vertexData:VertexData, indexData:IndexData, style:MeshStyle=null):void
+		protected function initMesh(vertexData:VertexData, indexData:IndexData, style:MeshStyle=null):void
 		{
             if (vertexData == null) throw new ArgumentError("VertexData must not be null");
             if (indexData == null)  throw new ArgumentError("IndexData must not be null");

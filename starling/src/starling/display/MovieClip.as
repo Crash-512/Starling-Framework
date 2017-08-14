@@ -63,16 +63,16 @@ package starling.display
             if (textures != null && textures.length > 0)
             {
                 texture = textures[0];
-                init(textures, fps);
+                initMovieClip(textures, fps);
             }
             super(texture);
         }
         
-        public function init(textures:Vector.<Texture>, fps:Number):void
+        public function initMovieClip(textures:Vector.<Texture>, fps:Number):void
         {
             if (_style == null || _style.texture == null)
 			{
-				texture = textures[0];
+				initImage(textures[0]);
                 readjustSize();
 			}
             

@@ -51,7 +51,7 @@ package starling.display
      */
     public class Quad extends Mesh
     {
-        private var _bounds:Rectangle;
+        protected var _bounds:Rectangle;
 
         // helper objects
         private static var sPoint3D:Vector3D = new Vector3D();
@@ -59,20 +59,20 @@ package starling.display
         private static var sMatrix3D:Matrix3D = new Matrix3D();
 
         /** Creates a quad with a certain size and color. */
-        public function Quad(width:Number, height:Number, color:uint=0xffffff)
+        public function Quad(width:Number = 0, height:Number = 0, color:uint=0xffffff)
         {
             _bounds = new Rectangle(0, 0, width, height);
-
+            
             var vertexData:VertexData = new VertexData(MeshStyle.VERTEX_FORMAT, 4);
             var indexData:IndexData = new IndexData(6);
-
+            
             super(vertexData, indexData);
-
-            if (width == 0.0 || height == 0.0)
-                throw new ArgumentError("Invalid size: width and height must not be zero");
-
-            setupVertices();
             this.color = color;
+            
+            if (width != 0 && height != 0)
+            {
+                setupVertices();
+			}
         }
 
         /** Sets up vertex- and index-data according to the current settings. */

@@ -61,14 +61,31 @@ package starling.display
         /** Creates an image with a texture mapped onto it. */
         public function Image(texture:Texture = null)
         {
-            super(100, 100);
-            if (texture) setTexture(texture);
+            super();
+            
+            if (texture) 
+            {
+                initImage(texture);
+			}
         }
         
-		public function setTexture(texture:Texture):void
+		public function initImage(texture:Texture, indexData:IndexData = null, vertexData:VertexData = null):void
 		{
-            this.texture = texture;
-            readjustSize();
+            _bounds.width = texture.width;
+            _bounds.height = texture.height;
+            style.texture = texture;
+            
+            if (indexData != null && vertexData != null)
+            {
+                indexData.copyTo(this.indexData);
+                vertexData.copyTo(this.vertexData);
+			}
+            else
+			{
+				setupVertices();
+				readjustSize();
+			}
+            setRequiresRedraw();
 		}
 	
 		override public function dispose():void
