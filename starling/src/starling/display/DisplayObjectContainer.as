@@ -129,12 +129,12 @@ package starling.display
                     child.setParent(this);
                     child.dispatchEventWith(Event.ADDED, true);
                     
-                    if (stage)
+                    /*if (stage)
                     {
                         var container:DisplayObjectContainer = child as DisplayObjectContainer;
                         if (container) container.broadcastEventWith(Event.ADDED_TO_STAGE);
                         else           child.dispatchEventWith(Event.ADDED_TO_STAGE);
-                    }
+                    }*/
                 }
                 
                 return child;
@@ -165,12 +165,12 @@ package starling.display
                 var child:DisplayObject = _children[index];
                 child.dispatchEventWith(Event.REMOVED, true);
                 
-                if (stage)
+                /*if (stage)
                 {
                     var container:DisplayObjectContainer = child as DisplayObjectContainer;
                     if (container) container.broadcastEventWith(Event.REMOVED_FROM_STAGE);
                     else           child.dispatchEventWith(Event.REMOVED_FROM_STAGE);
-                }
+                }*/
                 
                 child.setParent(null);
                 index = _children.indexOf(child); // index might have changed by event handler

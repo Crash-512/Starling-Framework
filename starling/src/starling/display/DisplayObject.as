@@ -580,7 +580,7 @@ package starling.display
 
         // helpers
 
-        private function setOrientationChanged():void
+        [Inline] final private function setOrientationChanged():void
         {
             _orientationChanged = true;
             setRequiresRedraw();

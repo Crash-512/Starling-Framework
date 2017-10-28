@@ -95,9 +95,10 @@ package starling.styles
         /** The vertex format expected by this style (the same as found in the MeshEffect-class). */
         public static const VERTEX_FORMAT:VertexDataFormat = MeshEffect.VERTEX_FORMAT;
 
+        public var _texture:Texture;
+        
         private var _type:Class;
         private var _target:Mesh;
-        private var _texture:Texture;
         private var _textureBase:TextureBase;
         private var _textureSmoothing:String;
         private var _textureRepeat:Boolean;

@@ -187,14 +187,14 @@ package starling.display
         override public function set scaleX(value:Number):void
         {
             super.scaleX = value;
-            if (texture && (_scale9Grid || _tileGrid)) setupVertices();
+            if (_style._texture && (_scale9Grid || _tileGrid)) setupVertices();
         }
 
         /** @private */
         override public function set scaleY(value:Number):void
         {
             super.scaleY = value;
-            if (texture && (_scale9Grid || _tileGrid)) setupVertices();
+            if (_style._texture && (_scale9Grid || _tileGrid)) setupVertices();
         }
 
         /** @private */
