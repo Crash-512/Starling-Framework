@@ -251,7 +251,7 @@ package starling.display
         }
 
         /** The texture that is mapped to the mesh (or <code>null</code>, if there is none). */
-        public function get texture():Texture { return _style.texture; }
+        public function get texture():Texture { return _style._texture; }
         public function set texture(value:Texture):void { _style.texture = value; }
 
         /** Changes the color of all vertices to the same value.

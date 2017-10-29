@@ -381,6 +381,8 @@ package starling.display
                 ++_currentFrameID;
 
             var frame:MovieClipFrame = _frames[_currentFrameID];
+            _bounds.width = frame.texture.width;
+            _bounds.height = frame.texture.height;      
             texture = frame.texture;
         }
 

@@ -199,9 +199,9 @@ package starling.display
          */
         override public function set texture(value:Texture):void
         {
-            if (value != texture)
+            if (value != _style._texture)
             {
-                super.texture = value;
+                _style.texture = value;
                 setupVertices();
             }
         }

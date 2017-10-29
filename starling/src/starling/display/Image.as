@@ -178,8 +178,8 @@ package starling.display
         /** @private */
         override protected function setupVertices():void
         {
-            if (texture && _scale9Grid) setupScale9Grid();
-            else if (texture && _tileGrid) setupTileGrid();
+            if (_style._texture && _scale9Grid) setupScale9Grid();
+            else if (_style._texture && _tileGrid) setupTileGrid();
             else super.setupVertices();
         }
 
@@ -200,7 +200,7 @@ package starling.display
         /** @private */
         override public function set texture(value:Texture):void
         {
-            if (value != texture)
+            if (value != _style._texture)
             {
                 super.texture = value;
                 if (_scale9Grid && value) readjustSize();
