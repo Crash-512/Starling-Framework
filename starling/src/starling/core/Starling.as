@@ -370,6 +370,8 @@ package starling.core
             }
         }
 
+        private static const MAX_PASSED_TIME:Number = 1 / 15;
+        
         /** Calls <code>advanceTime()</code> (with the time that has passed since the last frame)
          *  and <code>render()</code>. */
         public function nextFrame():void
@@ -379,7 +381,7 @@ package starling.core
             _frameTimestamp = now;
 
             // to avoid overloading time-based animations, the maximum delta is truncated.
-            if (passedTime > 1.0) passedTime = 1.0;
+            if (passedTime > MAX_PASSED_TIME) passedTime = MAX_PASSED_TIME;
 
             // after about 25 days, 'getTimer()' will roll over. A rare event, but still ...
             if (passedTime < 0.0) passedTime = 1.0 / _nativeStage.frameRate;
