@@ -276,6 +276,9 @@ package starling.display
         public function get pixelSnapping():Boolean { return _pixelSnapping; }
         public function set pixelSnapping(value:Boolean):void { _pixelSnapping = value; }
 
+        public function set numVertices(value:int):void {}
+        public function set numIndices(value:int):void {}
+        
         /** The total number of vertices in the mesh. */
         public function get numVertices():int { return _vertexData.numVertices; }
 

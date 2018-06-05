@@ -255,7 +255,7 @@ package starling.display
         /** The total number of vertices in the mesh. If you change this to a smaller value,
          *  the surplus will be deleted. Make sure that no indices reference those deleted
          *  vertices! */
-        public function set numVertices(value:int):void
+        override public function set numVertices(value:int):void
         {
             if (_vertexData.numVertices != value)
             {
@@ -268,7 +268,7 @@ package starling.display
         /** The total number of indices in the mesh. If you change this to a smaller value,
          *  the surplus will be deleted. Always make sure that the number of indices
          *  is a multiple of three! */
-        public function set numIndices(value:int):void
+        override public function set numIndices(value:int):void
         {
             if (_indexData.numIndices != value)
             {

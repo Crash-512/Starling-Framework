@@ -117,20 +117,20 @@ package starling.display
      */
     public class DisplayObject extends EventDispatcher
     {
-        starling_internal var _visible:Boolean;
-        starling_internal var _lastParentOrSelfChangeFrameID:uint;
-        starling_internal var _hasVisibleArea:Boolean;
-        starling_internal var _x:Number;
-        starling_internal var _y:Number;
-        starling_internal var _scaleX:Number;
-        starling_internal var _scaleY:Number;
-        starling_internal var _skewX:Number;
-        starling_internal var _skewY:Number;
-        starling_internal var _alpha:Number;
-        starling_internal var _orientationChanged:Boolean;
-        starling_internal var _pivotX:Number;
-        starling_internal var _pivotY:Number;
-        starling_internal var _rotation:Number;
+        public var _visible:Boolean;
+        public var _lastParentOrSelfChangeFrameID:uint;
+        public var _hasVisibleArea:Boolean;
+        public var _x:Number;
+        public var _y:Number;
+        public var _scaleX:Number;
+        public var _scaleY:Number;
+        public var _skewX:Number;
+        public var _skewY:Number;
+        public var _alpha:Number;
+        public var _orientationChanged:Boolean;
+        public var _pivotX:Number;
+        public var _pivotY:Number;
+        public var _rotation:Number;
 		
 		// private members
 		

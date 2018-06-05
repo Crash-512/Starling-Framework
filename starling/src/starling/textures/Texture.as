@@ -26,8 +26,6 @@ package starling.textures
     import flash.utils.ByteArray;
     import flash.utils.getQualifiedClassName;
 	
-	import smart.engine.display.ITexture;
-	
 	import starling.core.Starling;
     import starling.errors.AbstractClassError;
     import starling.errors.MissingContextError;
@@ -123,7 +121,7 @@ package starling.textures
      *  @see starling.utils.SystemUtil
      *  @see TextureAtlas
      */
-    public class Texture implements ITexture
+    public class Texture
     {
         // helper objects
         private static var sDefaultOptions:TextureOptions = new TextureOptions();
