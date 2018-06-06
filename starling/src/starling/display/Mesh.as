@@ -66,7 +66,7 @@ package starling.display
 			}
         }
         
-		protected function initMesh(vertexData:VertexData, indexData:IndexData, style:MeshStyle=null):void
+		public function initMesh(vertexData:VertexData, indexData:IndexData, style:MeshStyle=null):void
 		{
             if (vertexData == null) throw new ArgumentError("VertexData must not be null");
             if (indexData == null)  throw new ArgumentError("IndexData must not be null");
